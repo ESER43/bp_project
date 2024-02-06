@@ -1033,9 +1033,44 @@ int main(/*int argc , char * argv[]*/){
     }else if(sanjeshbarabaryazebteda(10,s,"checkout -")==0){
         strcan2(s,10);
         if(sanjeshbarabaryazebteda(1,s,"b")==0){
+            //printf("1");
             strcan2(s,2);
             vfkari(s);
-            
+            printf("%s ",s0);
+            FILE * currentcomit0=fopen(parentcommit,"w");
+            fprintf(currentcomit0,"%s",s0);
+            fclose(currentcomit0);
+            strchasban(s1,ripasitory,"/currentbranch.txt");
+            FILE * bran = fopen(s1,"w");
+            fprintf(bran,"%s",s);
+            fclose(bran);
+            strchasban(s1,ripasitory,"/commits/");
+            strchasban(s2,s1,s0);
+            strchasban(s1,s2,"/");
+            strchasban(s2,s1,s0);
+            printf("%s ",s2);
+            struct dirent * qui;
+            DIR * gitit=opendir(s2);
+            //printf("1");
+            while((qui=readdir(gitit))!=NULL){
+                printf("2");
+                if( strcmp(qui->d_name,".") && strcmp(qui->d_name,"..") && strcmp(qui->d_name,"parent.txt") ){
+                    printf("1");
+                    strchasban(s1,s2,"/");
+                    strchasban(s3,s1,qui->d_name);
+                    addgitripasitory(stage,s0,s3);
+                    printf("%s \n",s3);
+                    addgitripasitory(currentposition,s0,s3);
+                    printf("%s \n",s3);
+                    strchasban(s1,"./",ripasitoryname);
+                    addgitripasitory(s1,s0,s3);
+                    printf("%s \n",s3);
+                }
+                else{
+                    printf("0");
+                    }
+            }
+
         }else if(sanjeshbarabaryazebteda(1,s,"c")==0){
            /* strcan2(s,2);
             strchasban(s1,ripasitory,"/commits");
